@@ -6,14 +6,16 @@ import ParallaxScrollView from "@/components/parallax-scroll-view";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import { Link } from "expo-router";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
+  console.log(require("../../assets/images/icon.png"));
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
       headerImage={
         <Image
-          source={require("@/assets/images/partial-react-logo.png")}
+          source={{ uri: "https://picsum.dev/300/200" }}
           style={styles.reactLogo}
         />
       }
@@ -22,6 +24,14 @@ export default function HomeScreen() {
         <ThemedText type="title">Welcome!</ThemedText>
         <HelloWave />
       </ThemedView>
+      <SafeAreaView>
+        <Image
+          transition={1000}
+          blurRadius={1}
+          source={{ uri: "https://picsum.dev/300/200" }}
+          style={styles.reactLogo}
+        />
+      </SafeAreaView>
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 1: Try it</ThemedText>
         <ThemedText>
