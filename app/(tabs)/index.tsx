@@ -1,5 +1,5 @@
 import { Image } from "expo-image";
-import { Platform, StyleSheet } from "react-native";
+import { Platform, StyleSheet, TouchableNativeFeedback, View } from "react-native";
 
 import { HelloWave } from "@/components/hello-wave";
 import ParallaxScrollView from "@/components/parallax-scroll-view";
@@ -14,10 +14,10 @@ export default function HomeScreen() {
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
       headerImage={
-        <Image
-          source={{ uri: "https://picsum.dev/300/200" }}
-          style={styles.reactLogo}
-        />
+        <TouchableNativeFeedback onPress={()=> console.log('image tapped')} useForeground>
+
+          <View style={{ width: 200, height: 300, backgroundColor: 'dodgerblue'}} ></View>
+        </TouchableNativeFeedback>
       }
     >
       <ThemedView style={styles.titleContainer}>
@@ -97,6 +97,8 @@ export default function HomeScreen() {
   );
 }
 
+
+
 const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: "row",
@@ -107,6 +109,11 @@ const styles = StyleSheet.create({
     gap: 8,
     marginBottom: 8,
   },
+  photoTest: {
+  height: 178,
+  width: 290,
+  resizeMode: "cover",
+},
   reactLogo: {
     height: 178,
     width: 290,
