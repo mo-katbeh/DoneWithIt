@@ -1,5 +1,4 @@
-import { Image } from "expo-image";
-import { Platform, StyleSheet, TouchableNativeFeedback, View } from "react-native";
+import { Button, Platform, Pressable, StyleSheet, TouchableNativeFeedback, View } from "react-native";
 
 import { HelloWave } from "@/components/hello-wave";
 import ParallaxScrollView from "@/components/parallax-scroll-view";
@@ -14,23 +13,40 @@ export default function HomeScreen() {
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
       headerImage={
-        <TouchableNativeFeedback onPress={()=> console.log('image tapped')} useForeground>
-
-          <View style={{ width: 200, height: 300, backgroundColor: 'dodgerblue'}} ></View>
-        </TouchableNativeFeedback>
+       <View pointerEvents="box-none">
+    <TouchableNativeFeedback 
+      onPress={() => console.log("image tapped")}
+      useForeground
+    >
+      <View 
+        style={{ width: 200, height: 300, backgroundColor: "dodgerblue" }} 
+      />
+    </TouchableNativeFeedback>
+  </View>
       }
     >
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Welcome!</ThemedText>
         <HelloWave />
       </ThemedView>
+        <Pressable onPress={() => console.log("Clicked")}
+                  android_ripple={{ borderless: false }}
+                    style={{
+                      
+                      backgroundColor: "orange",
+                      padding: 12,
+                      borderRadius: 6,
+                      alignItems: "center",
+                    }}>
+
+          <ThemedText style={{color: "white", fontWeight: "bold"}} >Click me</ThemedText> 
+        </Pressable>
+          
       <SafeAreaView>
-        <Image
-          transition={1000}
-          blurRadius={1}
-          source={{ uri: "https://picsum.dev/300/200" }}
-          style={styles.reactLogo}
-        />
+        <TouchableNativeFeedback useForeground>
+          
+        <View><Button title="Click me" color="orange" onPress={()=>console.log("Clicked")}/></View>
+        </TouchableNativeFeedback>
       </SafeAreaView>
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 1: Try it</ThemedText>
