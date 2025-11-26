@@ -30,13 +30,13 @@ export default function HomeScreen() {
         <HelloWave />
       </ThemedView>
       
-      <SafeAreaView>
+      <SafeAreaView style={styles.photoTest}>
         <Button title="Click me" color="orange" onPress={()=>Alert.alert("Test Alert", "This alert just for testing", [
           {text: "Yse", onPress: ()=> console.log('yes clicked')},
           {text: "No", onPress: ()=> console.log('No clicked')}
         ])}/>
         </SafeAreaView>
-      <ThemedView style={styles.stepContainer}>
+      <ThemedView style={[styles.titleContainer, container]}>
         <ThemedText type="subtitle">Step 1: Try it</ThemedText>
         <ThemedText>
           Edit{" "}
@@ -102,7 +102,7 @@ export default function HomeScreen() {
 }
 
 
-
+const  container= {backgroundColor: "orange"}
 const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: "row",
