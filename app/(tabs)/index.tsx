@@ -1,4 +1,4 @@
-import { Alert, Button, Platform, StyleSheet, TouchableNativeFeedback, View } from "react-native";
+import { Alert, Button, Platform, StatusBar, StyleSheet, TouchableNativeFeedback, View } from "react-native";
 
 import { HelloWave } from "@/components/hello-wave";
 import ParallaxScrollView from "@/components/parallax-scroll-view";
@@ -36,7 +36,7 @@ export default function HomeScreen() {
           {text: "No", onPress: ()=> console.log('No clicked')}
         ])}/>
         </SafeAreaView>
-      <ThemedView style={[styles.titleContainer, container]}>
+      <ThemedView style={styles.container}>
         <ThemedText type="subtitle">Step 1: Try it</ThemedText>
         <ThemedText>
           Edit{" "}
@@ -102,7 +102,7 @@ export default function HomeScreen() {
 }
 
 
-const  container= {backgroundColor: "orange"}
+
 const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: "row",
@@ -112,6 +112,11 @@ const styles = StyleSheet.create({
   stepContainer: {
     gap: 8,
     marginBottom: 8,
+  },
+  container:{
+    flex: 1,
+    backgroundColor: "#1D3D47",
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
   },
   photoTest: {
   height: 178,
