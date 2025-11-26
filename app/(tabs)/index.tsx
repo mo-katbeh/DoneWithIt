@@ -1,4 +1,4 @@
-import { Button, Platform, Pressable, StyleSheet, TouchableNativeFeedback, View } from "react-native";
+import { Alert, Button, Platform, StyleSheet, TouchableNativeFeedback, View } from "react-native";
 
 import { HelloWave } from "@/components/hello-wave";
 import ParallaxScrollView from "@/components/parallax-scroll-view";
@@ -29,25 +29,13 @@ export default function HomeScreen() {
         <ThemedText type="title">Welcome!</ThemedText>
         <HelloWave />
       </ThemedView>
-        <Pressable onPress={() => console.log("Clicked")}
-                  android_ripple={{ borderless: false }}
-                    style={{
-                      
-                      backgroundColor: "orange",
-                      padding: 12,
-                      borderRadius: 6,
-                      alignItems: "center",
-                    }}>
-
-          <ThemedText style={{color: "white", fontWeight: "bold"}} >Click me</ThemedText> 
-        </Pressable>
-          
+      
       <SafeAreaView>
-        <TouchableNativeFeedback useForeground>
-          
-        <View><Button title="Click me" color="orange" onPress={()=>console.log("Clicked")}/></View>
-        </TouchableNativeFeedback>
-      </SafeAreaView>
+        <Button title="Click me" color="orange" onPress={()=>Alert.alert("Test Alert", "This alert just for testing", [
+          {text: "Yse", onPress: ()=> console.log('yes clicked')},
+          {text: "No", onPress: ()=> console.log('No clicked')}
+        ])}/>
+        </SafeAreaView>
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 1: Try it</ThemedText>
         <ThemedText>
